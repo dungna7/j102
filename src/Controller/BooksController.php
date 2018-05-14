@@ -23,9 +23,11 @@ class BooksController extends AppController
      */
     public function index()
     {
+        $this->paginate['limit']=5;
         $books = $this->paginate($this->Books);
 //        echo "<pre>";
 //        var_dump($this->Books->getBookByType()[0]['bookName']);die;
+
         $this->set(compact('books'));
         $this->set('_serialize', ['books']);
     }
